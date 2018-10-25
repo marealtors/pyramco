@@ -23,3 +23,6 @@ What field type is { some field } and does it exist? Tests for the type AND exis
 
 # multi_search.py
 A multi-search input box that finds contacts by matching a name, email, or NRDS ID, or any string contained in one
+
+# get_name.py
+Returns the 'FullName' RAMCO Contact field for the Contact record matching "guid_var" and prints it to screen
