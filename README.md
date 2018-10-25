@@ -1,8 +1,8 @@
 # pyramco
 
-A collection of python methods and functions for use with the RAMCO API
+A collection of python methods and functions for use with the RAMCO API from MAR
 
-More info at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
+More info abnout the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
 - all require the 'requests' module be installed in python http://docs.python-requests.org/en/master/ 
 - all require Python 3.6+, mostly because of f-strings, adjust as needed
@@ -13,6 +13,7 @@ More info at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 ramco_api_key = 'your_ramco_api_key_goes_here'
 ramco_api_url = 'https://api.ramcoams.com/api/v2/'
 ```
+I recommend https://www.pythonanywhere.com/ as a good testing environment to work with these scripts and experiment.
 
 ## Functions: 
 
