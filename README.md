@@ -1,12 +1,14 @@
 # pyramco
-a collection of python methods and functions for use with the RAMCO API
 
-all require the 'requests' module be installed in python http://docs.python-requests.org/en/master/ 
+a collection of python methods and functions for use with the RAMCO API - more info at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
-all require config.py in the script folder, and the API key/url defined there as: 
+-all require the 'requests' module be installed in python http://docs.python-requests.org/en/master/ 
+
+-all require config.py in the script folder, and the API key/url defined there as: 
 
 ramco_api_key = 'your_ramco_api_key_goes_here'
 ramco_api_url = 'https://api.ramcoams.com/api/v2/'
+
 
 Functions: 
 
@@ -18,3 +20,6 @@ Does { some field } exist? Tests for the existence of a given field, to use with
 
 # field_type.py
 What field type is { some field } and does it exist? Tests for the type AND existence of a given custom field, requirements same as previous script
+
+# multi_search.py
+A multi-search input box that finds contacts by matching a name, email, or NRDS ID, or any string contained in one
