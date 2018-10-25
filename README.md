@@ -3,10 +3,16 @@
 a collection of python methods and functions for use with the RAMCO API - more info at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
 -all require the 'requests' module be installed in python http://docs.python-requests.org/en/master/ 
+-all require Python 3.6+, mostly because of f-strings, adjust as needed
+
+-most require json and pprint modules to be imported
+
+-we demonstrate a couple methods of calling the API and parsing returns, see the syntax near 'payload ='  and 'requests.post'
 
 -all require config.py in the script folder, and the API key/url defined there as: 
 
 ramco_api_key = 'your_ramco_api_key_goes_here'
+
 ramco_api_url = 'https://api.ramcoams.com/api/v2/'
 
 
@@ -26,3 +32,6 @@ A multi-search input box that finds contacts by matching a name, email, or NRDS 
 
 # get_name.py
 Returns the 'FullName' RAMCO Contact field for the Contact record matching "guid_var" and prints it to screen
+
+# get_metadata.py
+Returns the full metadata for the specified entity in JSON format. Can be a LOT of data, like in this example for Contact
