@@ -3,6 +3,7 @@
 a collection of python methods and functions for use with the RAMCO API - more info at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
 -all require the 'requests' module be installed in python http://docs.python-requests.org/en/master/ 
+
 -all require Python 3.6+, mostly because of f-strings, adjust as needed
 
 -most require json and pprint modules to be imported
