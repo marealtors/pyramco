@@ -15,6 +15,8 @@ ramco_api_url = 'https://api.ramcoams.com/api/v2/'
 ```
 I recommend https://www.pythonanywhere.com/ as a good testing environment to work with these scripts and experiment.
 
+We'll add new functions to this as they're available. 
+
 ## Functions: 
 
 ### conn_test.py
