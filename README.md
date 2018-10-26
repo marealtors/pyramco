@@ -35,4 +35,7 @@ A multi-search input box that finds contacts by matching a name, email, or NRDS 
 Returns the 'FullName' RAMCO Contact field for the Contact record matching "guid_var" and prints it to screen
 
 ### get_metadata.py
-Returns the full metadata for the specified entity in JSON format. Can be a LOT of data, like in this example for Contact
+Returns the full metadata for the specified entity in JSON format. Can be a LOT of data, like in this example for Contact.
+
+### test_mysql.py
+Tests your mysql connection to verify you're able to connect to a specific host/db/table by returning a list of tables in the specified db. Requires mysql-connector - https://pypi.org/project/mysql-connector/
