@@ -37,7 +37,7 @@ for k, guid in [(k, guid) for x in registrations for (k, guid) in x.items()]:
     
     # make request for each Contact
     payload2 = {
-    'key':'MassARInternal-MassAR-Prod-bb4168fd6bf097c9433653bef6235bae8cfb2ca1',
+    'key':config.ramco_api_key,
     'Operation':'GetEntity',
     'Entity':'Cobalt_MeetingRegistration',
     'GUID':f'{guid}',
