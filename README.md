@@ -8,7 +8,7 @@ More info abnout the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pd
 - all require Python 3.6+, mostly because of f-strings, adjust as needed
 - most require json and pprint modules to be imported
 - we demonstrate a couple methods of calling the API and parsing returns, see the syntax near 'payload ='  and 'requests.post'
-- all require config.py in the script folder, and the API key/url defined there like this:
+- all require config.py in the script folder, and the API key/url defined there as shown below; you can define any constants you want here.
 ```
 ramco_api_key = 'your_ramco_api_key_goes_here'
 ramco_api_url = 'https://api.ramcoams.com/api/v2/'
