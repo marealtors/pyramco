@@ -41,4 +41,7 @@ Returns the full metadata for the specified entity in JSON format. Can be a LOT 
 For use with an external MySQL database; tests your MySQL connection to verify you're able to connect to a specific host/database by returning a list of tables in the specified database. Can be used as the basis of more complex data connections. Requires mysql-connector - https://pypi.org/project/mysql-connector/
 
 ### fetch_meeting_attendees.py
-An example of a more complex iterative function that first calls the API to fetch some details about a specified meeting, then uses part of those results (meeting registration ids) to call the API again for each registered attendee and fetch additional details. This example could be used for a simple (or even an interactive) roster. 
+An example of a more complex iterative function that first calls the API to fetch some details about a specified meeting, then uses part of those results (meeting registration ids) to call the API again for each registered attendee and fetch additional details. This example could be used for a simple (or even an interactive) roster.
+
+### create_committee_meeting_registrations.py
+A 3-level iterative function, which takes a Meeting GUID as input, and looks to see if a Committee has been added on the meeting record; if so, it fetches all the current members of that committee and creates Meeting Registrations for them on that meeting. *still needs work to ensure existence of an associated committee on a meeting and to skip repeat registrations*
