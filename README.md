@@ -1,6 +1,6 @@
 # pyramco
 
-A collection of python methods and functions for use with the RAMCO API from MAR
+A collection of python methods and functions for use with the RAMCO API
 
 More info abnout the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
