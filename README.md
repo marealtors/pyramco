@@ -39,3 +39,6 @@ Returns the full metadata for the specified entity in JSON format. Can be a LOT 
 
 ### test_mysql.py
 Tests your mysql connection to verify you're able to connect to a specific host/db/table by returning a list of tables in the specified db. Requires mysql-connector - https://pypi.org/project/mysql-connector/
+
+### fetch_meeting_attendees.py
+An example of a iterative function that first calls the API to fetch some details about a specified meeting, then uses part of those results (meeting registration ids) to call the API again for each registered attendee and fetch additional details. This example could be used for a simple (or even an interactive) roster.
