@@ -7,8 +7,8 @@ More info abnout the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pd
 - all require the 'requests' module be installed in python http://docs.python-requests.org/en/master/ 
 - all require Python 3.6+, mostly because of f-strings, adjust as needed
 - most require json and pprint modules to be imported
-- we demonstrate a couple methods of calling the API and parsing returns, see the syntax near 'payload ='  and 'requests.post'
-- all require config.py in the script folder, and the API key/url defined there as shown below; you can define any constants you want here.
+- we demonstrate a couple different methods of calling the API, structuring requests, and parsing returns; see the syntax near 'payload ='  and 'requests.post' for examples/variations
+- all scripts require a proper config.py file in the script directory. The API key/url should be defined there as shown below; you can define any other constants you want there, as well.
 ```
 ramco_api_key = 'your_ramco_api_key_goes_here'
 ramco_api_url = 'https://api.ramcoams.com/api/v2/'
@@ -26,19 +26,19 @@ Does your API Key work? Tests connectivity by querying for the metadata on the '
 Does { some field } exist? Tests for the existence of a given field, to use with custom fields or for testing.
 
 ### field_type.py
-What field type is { some field } and does it exist? Tests for the type AND existence of a given custom field, requirements same as previous script
+What field type is { some field } and does it exist? Tests for the type AND existence of a given custom field.
 
 ### multi_search.py
-A multi-search input box that finds contacts by matching a name, email, or NRDS ID, or any string contained in one
+A simple multi-search input/output that finds contacts by matching a name, email, or NRDS ID entered by the user, or any partial match.
 
 ### get_name.py
-Returns the 'FullName' RAMCO Contact field for the Contact record matching "guid_var" and prints it to screen
+Returns the 'FullName' RAMCO Contact field for the Contact record matching the Contact GUID provided, and prints it to screen.
 
 ### get_metadata.py
-Returns the full metadata for the specified entity in JSON format. Can be a LOT of data, like in this example for Contact.
+Returns the full metadata for the specified entity in JSON format. Can be a LOT of data, as in this example for Contact.
 
 ### test_mysql.py
-Tests your mysql connection to verify you're able to connect to a specific host/db/table by returning a list of tables in the specified db. Requires mysql-connector - https://pypi.org/project/mysql-connector/
+For use with an external MySQL database; tests your MySQL connection to verify you're able to connect to a specific host/database by returning a list of tables in the specified database. Can be used as the basis of more complex data connections. Requires mysql-connector - https://pypi.org/project/mysql-connector/
 
 ### fetch_meeting_attendees.py
-An example of a more complex iterative function that first calls the API to fetch some details about a specified meeting, then uses part of those results (meeting registration ids) to call the API again for each registered attendee and fetch additional details. This example could be used for a simple (or even an interactive) roster.
+An example of a more complex iterative function that first calls the API to fetch some details about a specified meeting, then uses part of those results (meeting registration ids) to call the API again for each registered attendee and fetch additional details. This example could be used for a simple (or even an interactive) roster. 
