@@ -44,4 +44,10 @@ For use with an external MySQL database; tests your MySQL connection to verify y
 An example of a more complex iterative function that first calls the API to fetch some details about a specified meeting, then uses part of those results (meeting registration ids) to call the API again for each registered attendee and fetch additional details. This example could be used for a simple (or even an interactive) roster.
 
 ### create_committee_meeting_registrations.py
-A 3-level iterative function, which takes a Meeting GUID as input, and looks to see if a Committee has been added on the meeting record; if so, it fetches all the current members of that committee and creates Meeting Registrations for them on that meeting. *still needs work to ensure existence of an associated committee on a meeting and to skip repeat registrations*
+A function which takes a Meeting GUID as input, looks to see if a Committee has been added on the meeting record; and if so, fetches all the current members of that committee and creates Meeting Registrations for them on that meeting. *--still needs work to ensure existence of an associated committee on a meeting and to skip repeat registrations*
+
+### get_marketing_lists.py
+Fetches all your active Marketing Lists from RAMCO. Marketing Lists use some vague attributes; 'Type' returns 'false' for Static lists, and 'true' for Dynamic lists. The StatusCode for Lists is 0 for Active and 1 for inactive, and doesn't contain "display" text in the full returned JSON.
+
+### get_contacts_from_marketing_list.py
+Given a valid Marketing List GUID, returns GUIDS and email addresses for the Contacts associated with the list.
