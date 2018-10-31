@@ -1,8 +1,8 @@
 # pyramco
 
-A collection of python methods and functions for use with the RAMCO API
+A collection of Python methods and functions for use with the RAMCO API 
 
-More info abnout the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
+More info about the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
 - all require the `requests` module be installed in python http://docs.python-requests.org/en/master/ 
 - all require Python 3.6+, mostly because of f-strings, adjust as needed
@@ -43,14 +43,17 @@ For use with an external MySQL database; tests your MySQL connection to verify y
 ### fetch_meeting_attendees.py
 An example of a more complex iterative function that first calls the API to fetch some details about a specified meeting, then uses part of those results (meeting registration ids) to call the API again for each registered attendee and fetch additional details. This example could be used for a simple (or even an interactive) roster.
 
-### create_committee_meeting_registrations.py
-A function which takes a Meeting GUID as input, looks to see if a Committee has been added on the meeting record; and if so, fetches all the current members of that committee and creates Meeting Registrations for them on that meeting. *--still needs work to ensure existence of an associated committee on a meeting and to skip repeat registrations*
-
-### get_marketing_lists.py
-Fetches all your active Marketing Lists from RAMCO. Marketing Lists use some vague attributes; `Type` returns `false` for Static lists, and `true` for Dynamic lists. The StatusCode for Lists is 0 for Active and 1 for inactive, and doesn't contain "display" text in the full returned JSON.
-
 ### get_contacts_from_marketing_list.py
 Given a valid Marketing List GUID, returns GUIDS and email addresses for the Contacts associated with the list.
+
+### get_marketing_lists.py
+Fetches all your active Marketing Lists from RAMCO. Marketing Lists use some vague attributes; `Type` returns `false` for Static lists, and `true` for Dynamic lists. The StatusCode for Lists is 0 for Active and 1 for inactive, and doesn't contain descriptive `Display` text like most entities do.
+
+
+## Functions in progress/needing custom code
+
+### create_committee_meeting_registrations.py
+A function which takes a Meeting GUID as input, looks to see if a Committee has been added on the meeting record; and if so, fetches all the current members of that committee and creates Meeting Registrations for them on that meeting. *--still needs work to ensure existence of an associated committee on a meeting and to skip repeat registrations--*
 
 ### mailchimp_update_member_email.py
 Requires a LOT of additional configuration, more a proof of concept than a practical function (although we've had it running with no problems in production for 8 months):
