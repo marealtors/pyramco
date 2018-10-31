@@ -51,3 +51,11 @@ Fetches all your active Marketing Lists from RAMCO. Marketing Lists use some vag
 
 ### get_contacts_from_marketing_list.py
 Given a valid Marketing List GUID, returns GUIDS and email addresses for the Contacts associated with the list.
+
+### mailchimp_update_member_email.py
+Requires a lot of additional configuration:
+
+- A new text/email address field on Contacts must be created called 'ramcosub_mailchimp_sync_email'
+- A workflow must be created on Contacts that is triggered when the 'EmailAddress1' (regular email) field is modified; this workflow does the following: 
+
+[[https://github.com/marealtors/pyramco/blob/master/mailchimp.PNG?raw=true]]
