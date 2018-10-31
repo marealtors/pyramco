@@ -50,7 +50,7 @@ Given a valid Marketing List GUID, returns GUIDS and email addresses for the Con
 Fetches all your active Marketing Lists from RAMCO. Marketing Lists use some vague attributes; `Type` returns `false` for Static lists, and `true` for Dynamic lists. The StatusCode for Lists is 0 for Active and 1 for inactive, and doesn't contain descriptive `Display` text like most entities do.
 
 
-## Functions in progress/needing custom code
+## Functions in progress / Requiring custom code
 
 ### create_committee_meeting_registrations.py
 A function which takes a Meeting GUID as input, looks to see if a Committee has been added on the meeting record; and if so, fetches all the current members of that committee and creates Meeting Registrations for them on that meeting. *--still needs work to ensure existence of an associated committee on a meeting and to skip repeat registrations--*
