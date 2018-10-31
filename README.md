@@ -53,9 +53,19 @@ Fetches all your active Marketing Lists from RAMCO. Marketing Lists use some vag
 Given a valid Marketing List GUID, returns GUIDS and email addresses for the Contacts associated with the list.
 
 ### mailchimp_update_member_email.py
-Requires a lot of additional configuration:
+Requires a LOT of additional configuration, more a proof of concept than a practical function (although we've had it running with no problems in production for 8 months):
 
+- You'll need a MailChimp API key and the list ID of a list that contains all your members in your config.py file https://developer.mailchimp.com/documentation/mailchimp/ 
 - A new text/email address field on Contacts must be created called 'ramcosub_mailchimp_sync_email'
-- A workflow must be created on Contacts that is triggered when the 'EmailAddress1' (regular email) field is modified; this workflow does the following: 
+- Initially, and on creation of all new Contacts, the new field must be populated with the same value in 'EmailAddress1'
+- A workflow must be created on Contacts that is triggered when the 'EmailAddress1' (regular email) field is modified; this workflow does the following:
+
+  - Uses a third-party tool available at: https://kaskelasolutions.com to get the Contact's GUID as a value available to the Workflow
+  - Checks the email is not blank
+  - Uses a custom tool to make an external API request - in this case, the code in this function lives at that endpoint. RAMCO calls the MAR API, the MAR API in turn runs 'mailchimp_update_member_email.py'
+  - Waits one minute; this gives the function time to run
+  - Copies the value in 'EmailAddress1' to the new 'ramcosub_mailchimp_sync_email' field
 
 ![alt text](https://github.com/marealtors/pyramco/blob/master/mailchimp.PNG?raw=true)
+
+The purpose of all this is that MailChimp stores your members and refers to them by the MD5-hash of their email address, after converting it to all lowercase. In the one minute delay above, you're storing both the "old" and "new" email addresses for your member. The function fetches the "old" address, hashes it, finds the user in MailChimp using their API, and then having identified the user, changes the value to the "new" address. Then about a minute later, both fields in RAMCO will be the same. This way, if the user changes their email in the future, you can repeat the process. 
