@@ -55,6 +55,9 @@ Fetches all your active Marketing Lists from RAMCO. Marketing Lists use some vag
 ### create_committee_meeting_registrations.py
 A function which takes a Meeting GUID as input, looks to see if a Committee has been added on the meeting record; and if so, fetches all the current members of that committee and creates Meeting Registrations for them on that meeting. *--still needs work to ensure existence of an associated committee on a meeting and to skip repeat registrations--*
 
+### send_twilio_sms.py
+Fetches a single Contact's mobile phone number from RAMCO (if present) and sends a text/SMS messsage with the specified text to it via the Twilio API. Requires a Twilio account, phone number, and for the SID, Account Token, and Twilio number to be specified in the config file properly. See: https://www.twilio.com/docs/sms/quickstart/python Requires the twilio helper library and the `phonenumbers` library. https://pypi.org/project/phonenumbers/
+
 ### mailchimp_update_member_email.py
 Requires a LOT of additional configuration, more a proof of concept than a practical function (although we've had it running with no problems in production for 8 months):
 
