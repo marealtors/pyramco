@@ -58,6 +58,9 @@ A function which takes a Meeting GUID as input, looks to see if a Committee has 
 ### send_twilio_sms.py
 Fetches a single Contact's mobile phone number from RAMCO (if present) and sends a text/SMS messsage with the specified text to it via the Twilio API. Requires a Twilio account, phone number, and for the SID, Account Token, and Twilio number to be specified in the config file properly. See: https://www.twilio.com/docs/sms/quickstart/python Requires the twilio helper library and the `phonenumbers` library. https://pypi.org/project/phonenumbers/
 
+### twilio_sms_to_marketing_list.py
+Fetches the mobile numbers for Contacts associated with a specified Marketing List and sends them an SMS message using Twilio. Requirements as above, only works on Static marketing lists, so not suitable for long-term automations on marketing lists that might change over time. RAMCO doesn't store the contacts of a Dynamic Marketing list as individual relationships; it instead saves an XML object in the field `Query` on the `list` entity that contains the query CRM uses to fetch the Contacts at the time the list is fired. To text to Dynamic lists, you'd have to find a way to either push the query back into CRM and have it return a set of Contacts, or to parse the query in Python into something you could make an API call for those Contacts accuratley with. We'll see.
+
 ### mailchimp_update_member_email.py
 Requires a LOT of additional configuration, more a proof of concept than a practical function (although we've had it running with no problems in production for 8 months):
 
