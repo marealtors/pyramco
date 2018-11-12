@@ -22,6 +22,9 @@ We'll add new functions to this as they're available.
 ### conn_test.py
 Does your API Key work? Tests connectivity by querying for the metadata on the `cobalt_answer` entity, since it's small and not often customized. Looks at the `ResponseCode` contained in the jsonified reply from the server and returns either `ok` or `error` depending on if it gets `'200'` (which means OK) or any other response code in that reply.
 
+### clear_cache.py
+Simple operation to clear and rebuild the API cache so you can access fields you've just created via the API - use if you recently made a new field and you're getting a `400 invalid attribute` error and you know your fieldnames are correct.
+
 ### field_exist.py
 Does `some field` exist? Tests for the existence of a given field, to use with custom fields or for testing.
 
