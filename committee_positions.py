@@ -25,11 +25,11 @@ contact_id = data['cobalt_contact_cobalt_committeemembership']['ContactId']
 
 # evaluate the contents of the current committee positions field and decide how to update it
 if old_positions == None:
-    revised = f'{position}: {committee}'
+    revised = f'{position} - {committee}'
 elif len(old_positions) < 3:
-    revised = f'{position}: {committee}'
+    revised = f'{position} - {committee}'
 else:
-    revised = f'{old_positions}, {position}: {committee}'
+    revised = f'{old_positions}, {position} -  {committee}'
 
 # make another request to update the field
 payload2 = {
