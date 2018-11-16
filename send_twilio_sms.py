@@ -23,7 +23,6 @@ if raw_number == None:
 	print('no mobile number in record')
 	sys.exit('exit')
 else:
-
 	# parse it to the E164 format twilio needs
 	parsed_number = phonenumbers.parse(raw_number, 'US')
 	number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)
