@@ -43,7 +43,7 @@ for each in reply['Data']:
     
     # if it's 'x', clear it and insert the first position for this member
     if old_positions.startswith('x'):
-        revised = f'{position}: {committee}'
+        revised = f'{position} - {committee}'
     # if it's something else (another position has been written), concatenate them
     else:
         revised_position = f'{old_positions}, {position} - {committee}'
