@@ -1,4 +1,5 @@
 import requests
+import sys
 import json
 import config
 import phonenumbers
@@ -18,19 +19,24 @@ payload = {
 # fetch the Contact's mobile number from API
 raw_number = requests.post(config.ramco_api_url,payload).json()['Data']['MobilePhone']
 
-# parse it to the E164 format twilio needs
-parsed_number = phonenumbers.parse(raw_number, 'US')
-number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)
+if raw_number == None:
+	print('no mobile number in record')
+	sys.exit('exit')
+else:
 
-# make the twilio API request
-client = Client(config.twilio_account_sid, config.twilio_auth_token)
+	# parse it to the E164 format twilio needs
+	parsed_number = phonenumbers.parse(raw_number, 'US')
+	number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)
 
-# compose or pass your message text to 'body'
-message = client.messages.create(
-    body = 'Test text for SMS goes here',
-    from_= config.twilio_number,
-    to = number
-    )
+	# make the twilio API request
+	client = Client(config.twilio_account_sid, config.twilio_auth_token)
 
-# return the twilio SID for this message
-print(message.sid)
+	# compose or pass your message text to 'body'
+	message = client.messages.create(
+	    body = 'Test text for SMS goes here',
+	    from_= config.twilio_number,
+	    to = number
+	    )
+
+	# return the twilio SID for this message
+	print(message.sid)
