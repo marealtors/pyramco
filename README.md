@@ -24,9 +24,27 @@ I recommend https://www.pythonanywhere.com/ as a good testing environment to wor
 ### pyramco.py
 You can now call several functions more easily by importing pyramco and calling the functions defined there. 
 
-We'll add new functions to this as they're available. 
+For instance, to perform a GetEntityMetadata request for Contacts and print the result, the function goes from:
+```
+payload = {
+    'key': config.ramco_api_key,
+    'Operation':'GetEntityMetadata',
+    'Entity':'Contact'
+    } 
+metadata = requests.post(url,payload).json()
+pprint(metadata)
+```
+to:
+
+```
+x = get_entity_metadata('Contact')
+pprint(x)
+```
+
+See the script for details, updates to add all RAMCO API functionality coming soon. 
 
 ## Functions: 
+We'll add new functions to this section as they're available. 
 
 ### conn_test.py
 Does your API Key work? Tests connectivity by querying for the metadata on the `cobalt_answer` entity, since it's small and not often customized. Looks at the `ResponseCode` contained in the jsonified reply from the server and returns either `ok` or `error` depending on if it gets `'200'` (which means OK) or any other response code in that reply.
