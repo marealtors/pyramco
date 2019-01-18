@@ -9,4 +9,4 @@ payload = {
     'Entity':'contact'
     } 
 metadata = requests.post(url,payload).json()
-print(metadata)
+pprint(metadata)
