@@ -2,6 +2,10 @@
 
 A collection of Python methods and functions for use with the RAMCO API 
 
+AND NOW:
+
+A new API wrapper module that defines some key functions and simplifies the process of calling them.  
+
 More info about the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
 - all require the `requests` module be installed in python http://docs.python-requests.org/en/master/ 
@@ -14,6 +18,11 @@ ramco_api_key = 'your_ramco_api_key_goes_here'
 ramco_api_url = 'https://api.ramcoams.com/api/v2/'
 ```
 I recommend https://www.pythonanywhere.com/ as a good testing environment to work with these scripts and experiment.
+
+## Wrapper Module:
+
+### pyramco.py
+You can now call several functions more easily by importing pyramco and calling the functions defined there. 
 
 We'll add new functions to this as they're available. 
 
