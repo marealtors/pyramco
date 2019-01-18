@@ -37,8 +37,8 @@ pprint(metadata)
 to:
 
 ```
-x = get_entity_metadata('Contact')
-pprint(x)
+metadata = get_entity_metadata('Contact')
+pprint(metadata)
 ```
 
 See the script for details, updates to add all RAMCO API functionality coming soon. 
