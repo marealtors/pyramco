@@ -22,23 +22,22 @@ I recommend https://www.pythonanywhere.com/ as a good testing environment to wor
 ## Wrapper Module:
 
 ### pyramco.py
-You can now call several functions more easily by importing pyramco and calling the functions defined there. 
+You can now call several functions more easily with `import pyramco` and calling the functions defined there. 
 
-For instance, to perform a GetEntityMetadata request for Contacts and print the result, the function goes from:
+For instance, to perform a GetEntityMetadata request for Contacts and print the result, the function:
 ```
 payload = {
     'key': config.ramco_api_key,
     'Operation':'GetEntityMetadata',
     'Entity':'Contact'
     } 
+
 metadata = requests.post(url,payload).json()
-pprint(metadata)
 ```
-to:
+becomes:
 
 ```
 metadata = get_entity_metadata('Contact')
-pprint(metadata)
 ```
 
 See the script for details, updates to add all RAMCO API functionality coming soon. 
