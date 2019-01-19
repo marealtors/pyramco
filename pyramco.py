@@ -1,10 +1,9 @@
 import json
 import requests
-import config # still relies on proper config file or hardcode url/api key
+import config
 
 # a partial wrapper class for simplifying RAMCO API calls in Python 3.6+
 # returns jsonified but otherwise untouched responses
-# all functions require correct syntax and capitalization of arguments
 
 
 # no arguments are accepted. clears the server-side metadata cache. 204 is the expected return code.
@@ -67,7 +66,7 @@ def get_entities(entity, *attributes, filters='', string_delimiter='', max_resul
 
 
 # accepts a valid streamtoken string and resumes the get_entities request that generated it.
-def resume_streamtoken(streamtoken)
+def resume_streamtoken(streamtoken):
     payload = {
         'key': config.ramco_api_key,
         'Operation':'GetEntities',
