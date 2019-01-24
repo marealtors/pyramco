@@ -37,7 +37,7 @@ metadata = requests.post(url,payload).json()
 becomes:
 
 ```
-metadata = get_entity_metadata('Contact')
+metadata = pyramco.get_entity_metadata('Contact')
 ```
 
 See the script for details, updates to add all RAMCO API functionality coming soon. 
