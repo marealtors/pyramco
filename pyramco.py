@@ -77,6 +77,18 @@ def resume_streamtoken(streamtoken):
     reply = requests.post(ramco_api_url,payload).json()
     return(reply)
 
+### delete_entity
+# accepts a guid and deletes the corresponding record
+def delete_entity(entity, guid):
+    payload = {
+        'key': ramco_api_key,
+        'Operation':'DeleteEntity',
+        'Entity': entity,
+        'GUID': guid
+        }
+    reply = requests.post(ramco_api_url,payload).json()
+    return(reply)
+
 #### additional functions
 
 ### fetch_profile
