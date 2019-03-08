@@ -1,10 +1,6 @@
 # pyramco
 
-A collection of Python methods and functions for use with the RAMCO API 
-
-AND NOW:
-
-A new API wrapper module that defines some key functions and simplifies the process of calling them.  
+An API wrapper module for the RAMCO API that formalizes some key functions and simplifies the process of calling them.  
 
 More info about the API at: https://api.ramcoams.com/api/v2/ramco_api_v2_doc.pdf
 
@@ -18,6 +14,8 @@ ramco_api_key = 'your_ramco_api_key_goes_here'
 ramco_api_url = 'https://api.ramcoams.com/api/v2/'
 ```
 I recommend https://www.pythonanywhere.com/ as a good testing environment to work with these scripts and experiment.
+
+There's now an initial draft jupyter notebook in the repo that you can import into python anywhere, then drop pyramco.py in your "files" directory and be up and running instantly.
 
 ## Wrapper Module:
 
@@ -40,10 +38,8 @@ becomes:
 metadata = pyramco.get_entity_metadata('Contact')
 ```
 
-See the script for details, updates to add all RAMCO API functionality coming soon. 
-
 ## Functions: 
-We'll add new functions to this section as they're available. 
+The plan is to add all the functions noted below into a single 'pyramco_functions.py' file that would make them callable from the base library. Eventually the base module will duplicate/simplify the exact calls the RAMCO API can make, and the functions module will contain useful functions which rely only on standard RAMCO fields. 
 
 ### conn_test.py
 Does your API Key work? Tests connectivity by querying for the metadata on the `cobalt_answer` entity, since it's small and not often customized. Looks at the `ResponseCode` contained in the jsonified reply from the server and returns either `ok` or `error` depending on if it gets `'200'` (which means OK) or any other response code in that reply.
