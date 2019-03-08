@@ -77,6 +77,19 @@ def resume_streamtoken(streamtoken):
     reply = requests.post(ramco_api_url,payload).json()
     return(reply)
 
+### create_entity
+# accepts a valid entity name, a tuple of comma separated attribute=value pairs, and optionally a string delimiter character
+def create_entity(entity, *attributes, string_delimiter=''):
+    payload = {
+        'key': ramco_api_key,
+        'Operation':'CreateEntity',
+        'Entity': entity,
+        'Attributes': attributes,
+        'StringDelimiter': string_delimiter
+        }
+    reply = requests.post(ramco_api_url,payload).json()
+    return(reply)
+
 ### delete_entity
 # accepts a guid and deletes the corresponding record
 def delete_entity(entity, guid):
