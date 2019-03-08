@@ -39,7 +39,11 @@ metadata = pyramco.get_entity_metadata('Contact')
 ```
 
 ## Functions: 
-The plan is to add all the functions noted below into a single 'pyramco_functions.py' file that would make them callable from the base library. Eventually the base module will duplicate/simplify the exact calls the RAMCO API can make, and the functions module will contain useful functions which rely only on standard RAMCO fields. 
+The plan is to add all the functions noted below into a single 'pyramco_functions.py' file that would make them callable from the base library. 
+
+Eventually the base module will duplicate/simplify the exact calls the RAMCO API can make, and the functions module will contain useful functions which rely only on standard RAMCO fields. 
+
+Most functions will also be refactored to use 'pyramco' where applicable.
 
 ### conn_test.py
 Does your API Key work? Tests connectivity by querying for the metadata on the `cobalt_answer` entity, since it's small and not often customized. Looks at the `ResponseCode` contained in the jsonified reply from the server and returns either `ok` or `error` depending on if it gets `'200'` (which means OK) or any other response code in that reply.
