@@ -1,43 +1,26 @@
 import requests
 import config
 import json
+import pyramco
 
 # set or import your meeting GUID
-meeting_guid = 'PUT_YOUR_MEETING_GUID_HERE'
+guid = 'PUT_YOUR_MEETING_GUID_HERE'
 
-# make request for meeting's associated committee
-payload = {
-    'key':config.ramco_api_key,
-    'Operation':'GetEntity',
-    'Entity':'Cobalt_Meeting',
-    'Attributes':'ramco_Committee',
-    'GUID':meeting_guid
-    } 
-api_reply = requests.post(config.ramco_api_url,payload).json()
+# make request for meeting and the committee set to it, if any
+reply = pyramco.get_entity('Cobalt_Meeting', guid, ('ramco_Committee'))
+if ['Data']['ramco_Committee']:
+	committee_guid = reply['Data']['ramco_Committee']['Value']
+	# make request for committee memberships and their related contacts for the committee
+	reply2 = pyramco.get_entities('cobalt_committeemembership', ('cobalt_ContactId,statuscode'), filters=f'cobalt_CommitteeId<eq>{committee_guid} AND statuscode<eq>533470000')
+	contacts = reply2['Data']
 
-# get the guid of the associated committee
-committee_guid = api_reply['Data']['ramco_Committee']['Value']
+	for guids in contacts:
+		contact_guid = guids['cobalt_ContactId']['Value']
+		# create a meeting registration for each contact
+		reply3 = pyramco.create_entity('cobalt_meetingregistration',(f'cobalt_meetingid={meeting_guid},cobalt_contactid={contact_guid}'))
+		# acknowledge it worked
+		return ('meeting registrations added successfully', 204)
 
-# make a request for that meeting's associated committee's members contact records
-payload2 = {
-    'key':config.ramco_api_key,
-    'Operation':'GetEntities',
-    'Entity':'cobalt_committeemembership',
-    'Attributes':'cobalt_ContactId,statuscode',
-    'Filter':f'cobalt_CommitteeId<eq>{committee_guid} AND statuscode<eq>533470000' #only fetch current members
-    } 
-api_reply2 = requests.post(config.ramco_api_url,payload2).json()
-
-# get your contact info as an iterable
-contacts = api_reply2['Data']
-
-# for each contact returned, create a new meeting registration for the meeting
-for guids in contacts:
-    contact_guid = guids['cobalt_ContactId']['Value']
-    payload3 = {
-    'key':config.ramco_api_key,
-    'Operation':'CreateEntity',
-    'Entity':'cobalt_meetingregistration',
-    'AttributeValues':f'cobalt_meetingid={meeting_guid},cobalt_contactid={contact_guid}'
-    }
-    api_reply3 = requests.post(config.ramco_api_url,payload3).json()
+# or acknowledge it didn't work
+else:
+	return ('no committee associated with that meeting', 404)
