@@ -84,7 +84,7 @@ def create_entity(entity, *attributes, string_delimiter=''):
         'key': ramco_api_key,
         'Operation':'CreateEntity',
         'Entity': entity,
-        'Attributes': attributes,
+        'AttributeValues': attributes,
         'StringDelimiter': string_delimiter
         }
     reply = requests.post(ramco_api_url,payload).json()
